@@ -93,23 +93,28 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
 
 
+//         $fieldset->addField(
+//                     'image',
+//                     'image',
+//                     [
+//                         'name' => 'image',
+//                         'label' => __('Image'),
+//                         'note' => 'Allow image type: jpg, jpeg, png',
+//                         'config' => $wysiwygConfig,
+//
+//                     ]
+//                 );
         $fieldset->addField(
-                    'image',
-                    'image',
-                    [
-                        'name' => 'image',
-                        'label' => __('Image'),
-                        'note' => 'Allow image type: jpg, jpeg, png',
-                        'config' => $wysiwygConfig,
-
-                    ]
-                );
-//         $fieldset->addField('image_url', 'image', array(
-//                 'label'     => Mage::helper('tressympa_cheflist')->__('Image'),
-//                 'required'  => false,
-//                 'renderer' => 'tutorial/adminhtml_modulename_renderer_image',
-//                 'name'      => 'image_url',
-//             ));
+            'image',
+            'image',
+            [
+                'name' => 'image',
+                'label' => __('Image'),
+                'title' => __('Image'),
+                'required'  => false
+//                 'disabled' => $isElementDisabled
+            ]
+        );
 
         $fieldset->addField(
             'status',

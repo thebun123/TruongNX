@@ -1,9 +1,7 @@
 <?php
 namespace TruongNX\Tutorial\Model\ResourceModel\FAQ;
 
-/**
- * Factory class for @see \TruongNX\Grid\Model\Grid
- */
+
 class CollectionFactory
 {
     /**

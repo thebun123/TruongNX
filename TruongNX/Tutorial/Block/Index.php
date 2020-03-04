@@ -44,7 +44,7 @@ class Index extends \Magento\Framework\View\Element\Template
 
         $faq = $this->_faqFactory->create();
         $collection = $faq->getCollection();
-        $collection->addFieldToFilter('Status','1'); // if you want to use filter
+        $collection->addFieldToFilter('Status', '1'); // if you want to use filter
         //$collection->setOrder('test_id','ASC'); // if you want to set collection order
         $collection->setPageSize($pageSize);
         $collection->setCurPage($page);
