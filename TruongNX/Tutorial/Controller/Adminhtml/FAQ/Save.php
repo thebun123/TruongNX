@@ -30,22 +30,22 @@ class Save extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-    //        $data = $this->getRequest()->getPostValue();
-    //        if (!$data) {
-    //            $this->_redirect('tutorial/faq/addrow');
-    //            return;
-    //        }
-    //        try {
-    //            $rowData = $this->faqFactory->create();
-    //            $rowData->setData($data);
-    //            if (isset($data['id'])) {
-    //                $rowData->setEntityId($data['id']);
-    //            }
-    //            $rowData->save();
-    //            $this->messageManager->addSuccess(__('Row data has been successfully saved.'));
-    //        } catch (\Exception $e) {
-    //            $this->messageManager->addError(__($e->getMessage()));
-    //        }
+            $data = $this->getRequest()->getPostValue();
+            if (!$data) {
+                $this->_redirect('tutorial/faq/addrow');
+                return;
+            }
+            try {
+                $rowData = $this->faqFactory->create();
+                $rowData->setData($data);
+                if (isset($data['id'])) {
+                    $rowData->setEntityId($data['id']);
+                }
+                $rowData->save();
+                $this->messageManager->addSuccess(__('Row data has been successfully saved.'));
+            } catch (\Exception $e) {
+                $this->messageManager->addError(__($e->getMessage()));
+            }
 
         $this->_redirect('tutorial/faq/index');
     }
