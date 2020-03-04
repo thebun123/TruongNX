@@ -1,0 +1,37 @@
+
+<?php
+$collection = $this->getFAQCollection();
+?>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        align-self: center ;
+    }
+</style>
+<table class="data table" id="test-data-table"" >
+<caption class="table-caption">FAQ TABLE</caption>
+<thead>
+<tr>
+    <th scope="col" class="col id">ID</th>
+    <th scope="col" class="col title">Title</th>
+    <th scope="col" class="col image">Image</th>
+    <th scope="col" class="col author">Description</th>
+
+</tr>
+</thead>
+<tbody>
+<?php foreach ($collection as $key => $data): ?>
+    <tr>
+        <td data-th="ID" class="col title"><?php echo $data->getId(); ?></td>
+        <td data-th="Title" class="col author"><?php echo $data->getTitle(); ?></td>
+        <td data-th="Image" class="col author"><?php echo $data->getImage(); ?></td>
+        <td data-th="Description" class="col content"><?php echo $data->getDes(); ?></td>
+    </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>

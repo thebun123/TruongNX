@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="TruongNX_Tutorial::manager" title="FAQ" module="TruongNX_Tutorial" sortOrder="10" resource="TruongNX_Tutorial::manager"/>
+        <add id="TruongNX_Tutorial::add_row" title="FAQ Manager" module="TruongNX_Tutorial" sortOrder="20" parent="TruongNX_Tutorial::manager" action="tutorial/faq" resource="TruongNX_Tutorial::add_row"/>
+    </menu>
+</config>
