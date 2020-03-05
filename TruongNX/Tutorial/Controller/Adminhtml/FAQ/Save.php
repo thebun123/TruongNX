@@ -2,54 +2,35 @@
 namespace TruongNX\Tutorial\Controller\Adminhtml\Faq;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
+use TruongNX\Tutorial\Model\Faq\Image;
 
 class Save extends \Magento\Backend\App\Action
 {
     /**
      * @var \TruongNX\Tutorial\Model\FAQFactory
      */
-    var $faqFactory;
+    public $faqFactory;
+
+    protected $uploaderFactory;
+    protected $imageModel;
 
     /**
+     * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
      * @param \Magento\Backend\App\Action\Context $context
      * @param \TruongNX\Tutorial\Model\FAQFactory $faqFactory
+//     * @param Image $imageModel
      */
     public function __construct(
-//        \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory,
+        \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
         \Magento\Backend\App\Action\Context $context,
         \TruongNX\Tutorial\Model\FAQFactory $faqFactory
+//        Image $imageModel
     ) {
-//        $this->_fileUploaderFactory = $fileUploaderFactory;
-
         parent::__construct($context);
         $this->faqFactory = $faqFactory;
+        $this->uploaderFactory = $uploaderFactory;
+//        $this->imageModel = $imageModel;
     }
-
-//    /**
-//     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-//     * @SuppressWarnings(PHPMD.NPathComplexity)
-//     */
-//    public function execute()
-//    {
-//        $data = $this->getRequest()->getPostValue();
-//        if (!$data) {
-//            $this->_redirect('tutorial/faq/addrow');
-//            return;
-//        }
-//        try {
-//            $rowData = $this->faqFactory->create();
-//            $rowData->setData($data);
-//            if (isset($data['id'])) {
-//                $rowData->setEntityId($data['id']);
-//            }
-//            $rowData->save();
-//            $this->messageManager->addSuccess(__('Row data has been successfully saved.'));
-//        } catch (\Exception $e) {
-//            $this->messageManager->addError(__($e->getMessage()));
-//        }
-//
-//        $this->_redirect('tutorial/faq/index');
-//    }
 
     public function execute()
     {
@@ -61,14 +42,14 @@ class Save extends \Magento\Backend\App\Action
             if ($postId) {
                 $model->load($postId);
             }
-            $imagePost = $this->getRequest()->getFiles('image');
-            $fileName = ($imagePost && array_key_exists('name', $imagePost)) ?
-                $imagePost['name'] : null;
-            if ($imagePost && $fileName) {
+            $faqImage = $this->getRequest()->getFiles('faq_image');
+            $fileName = ($faqImage && array_key_exists('name', $faqImage)) ?
+                $faqImage['name'] : null;
+            if ($faqImage && $fileName) {
                 try {
                     $uploader = $this->_objectManager->create(
                         'Magento\MediaStorage\Model\File\Uploader',
-                        ['fileId' =>'image']
+                        ['fileId' =>'faq_image']
                     );
                     $uploader->setAllowedExtensions('jpg', 'jpeg', 'png');
 //                    /** @var \Magento\Framework\Image\Adapter\AdapterInterface
@@ -91,7 +72,7 @@ class Save extends \Magento\Backend\App\Action
             }
             $rowData = $this->getRequest()->getParam('id');
             $model->setDate($rowData);
-            try{
+            try {
                 $model->save();
                 $this->messageManager->addSuccess(__('The FAQ has been saved.'));
 
@@ -118,4 +99,29 @@ class Save extends \Magento\Backend\App\Action
     {
         return $this->_authorization->isAllowed('TruongNX_FAQ::save');
     }
+
+//    public function uploadFileAndGetName($input, $destinationFolder, $data)
+//    {
+//        try {
+//            if (isset($data[$input]['delete'])) {
+//                return '';
+//            } else {
+//                $uploader = $this->uploaderFactory->create(['fileId' => $input]);
+//                $uploader->setAllowRenameFiles(true);
+//                $uploader->setFilesDispersion(true);
+//                $uploader->setAllowCreateFolders(true);
+//                $result = $uploader->save($destinationFolder);
+//                return $result['file'];
+//            }
+//        } catch (\Exception $e) {
+//            if ($e->getCode() != \Magento\Framework\File\Uploader::TMP_NAME_EMPTY) {
+//                throw new FrameworkException($e->getMessage());
+//            } else {
+//                if (isset($data[$input]['value'])) {
+//                    return $data[$input]['value'];
+//                }
+//            }
+//        }
+//        return '';
+//    }
 }

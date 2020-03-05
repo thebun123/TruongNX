@@ -65,6 +65,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
         }
 
+        $fieldset->addType('image', '\TruongNX\Tutorial\Block\Adminhtml\Faq\Helper\Image');
+
         $fieldset->addField(
             'title',
             'text',
@@ -92,29 +94,17 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
 
-
         $fieldset->addField(
-                    'image',
+                    'faq_image',
                     'image',
                     [
-                        'name' => 'image',
+                        'name' => 'faq_image',
                         'label' => __('Image'),
                         'title' => __('Image'),
                         'note' => 'Allow image type: jpg, jpeg, png',
-                        'required' => 'true',
+                        'required' => 'false',
                     ]
-                );
-//         $fieldset->addField(
-//             'image',
-//             'image',
-//             [
-//                 'name' => 'image',
-//                 'label' => __('Image'),
-//                 'title' => __('Image'),
-//                 'required'  => false
-//                 'disabled' => $isElementDisabled
-//             ]
-//         );
+        );
 
         $fieldset->addField(
             'status',
@@ -135,5 +125,16 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         $this->setForm($form);
 
         return parent::_prepareForm();
+    }
+
+    public function show_image($value)
+    {
+        if (empty($value)){
+            return '';
+        }
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $mediaUrl = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        $width = 150;
+        return "<img src='" . $mediaUrl . $value . "' width='" . $width . "'/>";
     }
 }
