@@ -12,7 +12,7 @@ class Save extends \Magento\Backend\App\Action
     public $faqFactory;
 
     protected $uploaderFactory;
-    protected $imageModel;
+    protected $log;
 
     /**
      * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
@@ -23,13 +23,13 @@ class Save extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
         \Magento\Backend\App\Action\Context $context,
-        \TruongNX\Tutorial\Model\FAQFactory $faqFactory
-//        Image $imageModel
+        \TruongNX\Tutorial\Model\FAQFactory $faqFactory,
+        \TruongNX\Tutorial\Logger\Logger $log
     ) {
         parent::__construct($context);
         $this->faqFactory = $faqFactory;
+        $this->log=$log;
         $this->uploaderFactory = $uploaderFactory;
-//        $this->imageModel = $imageModel;
     }
 
     public function execute()
@@ -70,8 +70,8 @@ class Save extends \Magento\Backend\App\Action
                     }
                 }
             }
-            $rowData = $this->getRequest()->getParam('id');
-            $model->setDate($rowData);
+            $data = $this->getRequest()->getPostValue();
+            $model->setData($data);
             try {
                 $model->save();
                 $this->messageManager->addSuccess(__('The FAQ has been saved.'));
@@ -87,7 +87,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addError($e->getMessage());
             }
 
-            $this->_getSession()->setFormData($rowData);
+            $this->_getSession()->setFormData($data);
             $this->_redirect('tutorial/faq/index', ['id' => $postId]);
         }
     }

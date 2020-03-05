@@ -3,8 +3,8 @@
     <default>
         <tutorial>
             <general>
-                <display_text>FAQ Table</display_text>
-                <display_text>5</display_text>
+                <display_title>FAQ Table</display_title>
+                <display_number_faq>5</display_number_faq>
             </general>
         </tutorial>
     </default>

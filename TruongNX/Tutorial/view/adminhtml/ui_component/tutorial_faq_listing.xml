@@ -44,6 +44,9 @@
         </argument>
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
+
+
+
 <!--        <filters name="listing_filters">-->
 <!--            <argument name="data" xsi:type="array">-->
 <!--                <item name="config" xsi:type="array">-->
@@ -100,21 +103,10 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">status</item>
                         <item name="label" xsi:type="string" translate="true">Status</item>
-                    </item>
-                </argument>
-                <argument name="actions" xsi:type="array">
-                    <item name="0" xsi:type="array">
-                        <item name="type" xsi:type="string">enable</item>
-                        <item name="label" xsi:type="string" translate="true">Enable</item>
-                        <item name="url" xsi:type="url" path="tutorial/faq/massstatus">
-                            <param name="status">0</param>
-                        </item>
-                    </item>
-                    <item name="1" xsi:type="array">
-                        <item name="type" xsi:type="string">disable</item>
-                        <item name="label" xsi:type="string" translate="true">Disable</item>
-                        <item name="url" xsi:type="url" path="tutorial/faq/massstatus">
-                            <param name="status">1</param>
+                        <item name="url" xsi:type="url" path="tutorial/faq/massstatus"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Status</item>
+                            <item name="message" xsi:type="string" translate="true">Do you want to enable selected row record?</item>
                         </item>
                     </item>
                 </argument>

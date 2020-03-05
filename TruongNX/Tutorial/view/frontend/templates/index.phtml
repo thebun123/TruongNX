@@ -4,10 +4,18 @@ $collection = $this->getFAQCollection();
 ?>
 
 <style>
+
+    td{
+        width:200px;
+    }
+    table{
+        500px;
+    }
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
         align-self: center ;
+        overflow:hidden
     }
 </style>
 <table class="data table" id="test-data-table"" >
@@ -27,7 +35,7 @@ $collection = $this->getFAQCollection();
         <td data-th="ID" class="col title"><?php echo $data->getId(); ?></td>
         <td data-th="Title" class="col author"><?php echo $data->getTitle(); ?></td>
         <td data-th="Image" class="col author"><?php echo $data->getImage(); ?></td>
-        <td data-th="Description" class="col content"><?php echo $data->getDes(); ?></td>
+        <td width="100" data-th="Description" class="col content"><?php echo $data->getDes(); ?></td>
     </tr>
 <?php endforeach; ?>
 </tbody>

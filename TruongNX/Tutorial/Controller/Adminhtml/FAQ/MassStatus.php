@@ -16,6 +16,8 @@ class MassStatus extends \Magento\Backend\App\Action
      */
     protected $filter;
 
+    protected $log;
+
     /**
      * @var CollectionFactory
      */
@@ -26,9 +28,14 @@ class MassStatus extends \Magento\Backend\App\Action
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */
-    public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
-    {
+    public function __construct(
+        Context $context,
+        \TruongNX\Tutorial\Logger\Logger $logger,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    ) {
         $this->filter = $filter;
+        $this->log = $logger;
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
@@ -40,15 +47,19 @@ class MassStatus extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $statusValue = $this->getRequest()->getParam('status');
-//        $index = $this->getRequest()->getParam('index');
+        $total = 0;
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         foreach ($collection as $item) {
-            $item->data->setStatus('1');
-            $item->save();
+//            $this->log->info($item->toJson());
+            if ($item['status'] == '0') {
+                $item['status'] = '1';
+                $total += 1;
+                $item->save();
+            }
+//            $item->setStatus('Enable')->save();
         }
 //        $this->messageManager->addSuccess(__('A total of %1 record(s) have been modified.', $collection->getSize()));
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been modified.', $collection->getSize()));
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been modified.', $total));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
