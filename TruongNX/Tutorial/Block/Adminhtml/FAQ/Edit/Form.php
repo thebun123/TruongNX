@@ -52,7 +52,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
 
         $form->setHtmlIdPrefix('wkgrid_');
-        if ($model->getEntityId()) {
+        if ($model->getId()) {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
                 ['legend' => __('Edit Row Data'), 'class' => 'fieldset-wide']
@@ -93,28 +93,28 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
 
 
-//         $fieldset->addField(
-//                     'image',
-//                     'image',
-//                     [
-//                         'name' => 'image',
-//                         'label' => __('Image'),
-//                         'note' => 'Allow image type: jpg, jpeg, png',
-//                         'config' => $wysiwygConfig,
-//
-//                     ]
-//                 );
         $fieldset->addField(
-            'image',
-            'image',
-            [
-                'name' => 'image',
-                'label' => __('Image'),
-                'title' => __('Image'),
-                'required'  => false
+                    'image',
+                    'image',
+                    [
+                        'name' => 'image',
+                        'label' => __('Image'),
+                        'title' => __('Image'),
+                        'note' => 'Allow image type: jpg, jpeg, png',
+                        'required' => 'true',
+                    ]
+                );
+//         $fieldset->addField(
+//             'image',
+//             'image',
+//             [
+//                 'name' => 'image',
+//                 'label' => __('Image'),
+//                 'title' => __('Image'),
+//                 'required'  => false
 //                 'disabled' => $isElementDisabled
-            ]
-        );
+//             ]
+//         );
 
         $fieldset->addField(
             'status',
@@ -129,6 +129,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
             ]
         );
+
         $form->setValues($model->getData());
         $form->setUseContainer(true);
         $this->setForm($form);

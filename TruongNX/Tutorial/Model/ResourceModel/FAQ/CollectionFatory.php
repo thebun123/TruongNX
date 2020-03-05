@@ -1,5 +1,5 @@
 <?php
-namespace TruongNX\Tutorial\Model\ResourceModel\FAQ;
+namespace TruongNX\Tutorial\Model\ResourceModel\Faq;
 
 
 class CollectionFactory
@@ -36,7 +36,7 @@ class CollectionFactory
      * Create class instance with specified parameters
      *
      * @param array $data
-     * @return \TruongNX\Tutorial\Model\ResourceModel\FAQ\Collection
+     * @return \TruongNX\Tutorial\Model\ResourceModel\Faq\Collection
      */
     public function create(array $data = [])
     {

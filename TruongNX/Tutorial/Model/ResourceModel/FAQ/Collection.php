@@ -1,6 +1,6 @@
 <?php
 
-namespace TruongNX\Tutorial\Model\ResourceModel\FAQ;
+namespace TruongNX\Tutorial\Model\ResourceModel\Faq;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -12,7 +12,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->_init(
             'TruongNX\Tutorial\Model\FAQ',
-            'TruongNX\Tutorial\Model\ResourceModel\FAQ'
+            'TruongNX\Tutorial\Model\ResourceModel\Faq'
         );
     }
 }

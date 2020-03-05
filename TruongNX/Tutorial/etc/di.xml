@@ -3,7 +3,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="TruongNX\Tutorial\Api\Data\FAQInterface" type="TruongNX\Tutorial\Model\FAQ" />
 
-    <virtualType name="TruongNX\Tutorial\Model\ResourceModel\FAQ\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="TruongNX\Tutorial\Model\ResourceModel\Faq\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">faq_table</argument>
             <argument name="resourceModel" xsi:type="string">TruongNX\Tutorial\Model\ResourceModel\FAQ</argument>
@@ -12,8 +12,31 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="faq_data_source" xsi:type="string">TruongNX\Tutorial\Model\ResourceModel\FAQ\Grid\Collection</item>
+                <item name="faq_data_source" xsi:type="string">
+                    TruongNX\Tutorial\Model\ResourceModel\Faq\Grid\Collection
+                </item>
             </argument>
         </arguments>
     </type>
+
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
+        <arguments>
+            <argument name="extensions" xsi:type="array">
+                <item name="allowed" xsi:type="array">
+                    <item name="jpg" xsi:type="number">1</item>
+                    <item name="png" xsi:type="number">1</item>
+                    <item name="jpeg" xsi:type="number">1</item>
+                </item>
+                <item name="image_allowed" xsi:type="array">
+                    <item name="jpg" xsi:type="number">1</item>
+                    <item name="png" xsi:type="number">1</item>
+                    <item name="jpeg" xsi:type="number">1</item>
+                </item>
+                <item name="media_allowed" xsi:type="array">
+
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>

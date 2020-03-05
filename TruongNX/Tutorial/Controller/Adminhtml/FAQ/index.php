@@ -1,6 +1,6 @@
 <?php
 
-namespace TruongNX\Tutorial\Controller\Adminhtml\FAQ;
+namespace TruongNX\Tutorial\Controller\Adminhtml\Faq;
 
 class Index extends \Magento\Backend\App\Action
 {

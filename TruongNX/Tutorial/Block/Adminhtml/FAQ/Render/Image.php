@@ -1,5 +1,5 @@
 <?php
-namespace TruongNX\Tutorial\Block\Adminhtml\FAQ\Render;
+namespace TruongNX\Tutorial\Block\Adminhtml\Faq\Render;
 
 class TruongNX_Tutorial_Block_Adminhtml_FAQ_Renderer_Image extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {

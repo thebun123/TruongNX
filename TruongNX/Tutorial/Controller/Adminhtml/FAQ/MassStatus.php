@@ -1,10 +1,10 @@
 <?php
-namespace TruongNX\Tutorial\Controller\Adminhtml\FAQ;
+namespace TruongNX\Tutorial\Controller\Adminhtml\Faq;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
-use TruongNX\Tutorial\Model\ResourceModel\FAQ\CollectionFactory;
+use TruongNX\Tutorial\Model\ResourceModel\Faq\CollectionFactory;
 
 /**
  * Class MassDisable
@@ -41,12 +41,10 @@ class MassStatus extends \Magento\Backend\App\Action
     public function execute()
     {
         $statusValue = $this->getRequest()->getParam('status');
-        $index = $this->getRequest()->getParam('index');
-        $this->messageManager->addMessage($statusValue);
+//        $index = $this->getRequest()->getParam('index');
         $collection = $this->filter->getCollection($this->collectionFactory->create());
-        $this->messageManager->addMessage($collection);
         foreach ($collection as $item) {
-            $item->setStatus($statusValue);
+            $item->data->setStatus('1');
             $item->save();
         }
 //        $this->messageManager->addSuccess(__('A total of %1 record(s) have been modified.', $collection->getSize()));

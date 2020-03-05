@@ -1,6 +1,6 @@
 <?php
 
-namespace TruongNX\Tutorial\Controller\Adminhtml\FAQ;
+namespace TruongNX\Tutorial\Controller\Adminhtml\Faq;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
@@ -40,7 +40,7 @@ class AddRow extends Action
         }
         $this->coreRegistry->register('row_data', $rowData);
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $title = $rowId ? __('Edit row data') . $rowTitle : __('Add row data');
+        $title = $rowId ? __('Edit row data: ') . $rowTitle : __('Add row data');
         $resultPage->getConfig()->getTitle()->prepend($title);
         return $resultPage;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace TruongNX\Tutorial\Block\Adminhtml\FAQ;
+namespace TruongNX\Tutorial\Block\Adminhtml\Faq;
 
 class AddRow extends \Magento\Backend\Block\Widget\Form\Container
 {
