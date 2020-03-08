@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="truongnx_tutorial_modified_db">
+        <observer name="modified_db" instance="TruongNX\Tutorial\Observer\ModifiedDB" />
+    </event>
+</config>

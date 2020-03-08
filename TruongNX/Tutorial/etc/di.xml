@@ -2,6 +2,8 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="TruongNX\Tutorial\Api\Data\FAQInterface" type="TruongNX\Tutorial\Model\FAQ" />
+    <preference for="TruongNX\Tutorial\Api\Data\FAQStoreInterface" type="TruongNX\Tutorial\Model\FAQStore" />
+    <preference for="Psr\Log\LoggerInterface" type="Magento\Framework\Logger\Monolog" />
 
     <virtualType name="TruongNX\Tutorial\Model\ResourceModel\Faq\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
@@ -19,25 +21,25 @@
         </arguments>
     </type>
 
-    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
-        <arguments>
-            <argument name="extensions" xsi:type="array">
-                <item name="allowed" xsi:type="array">
-                    <item name="jpg" xsi:type="number">1</item>
-                    <item name="png" xsi:type="number">1</item>
-                    <item name="jpeg" xsi:type="number">1</item>
-                </item>
-                <item name="image_allowed" xsi:type="array">
-                    <item name="jpg" xsi:type="number">1</item>
-                    <item name="png" xsi:type="number">1</item>
-                    <item name="jpeg" xsi:type="number">1</item>
-                </item>
-                <item name="media_allowed" xsi:type="array">
+<!--    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">-->
+<!--        <arguments>-->
+<!--            <argument name="extensions" xsi:type="array">-->
+<!--                <item name="allowed" xsi:type="array">-->
+<!--                    <item name="jpg" xsi:type="number">1</item>-->
+<!--                    <item name="png" xsi:type="number">1</item>-->
+<!--                    <item name="jpeg" xsi:type="number">1</item>-->
+<!--                </item>-->
+<!--                <item name="image_allowed" xsi:type="array">-->
+<!--                    <item name="jpg" xsi:type="number">1</item>-->
+<!--                    <item name="png" xsi:type="number">1</item>-->
+<!--                    <item name="jpeg" xsi:type="number">1</item>-->
+<!--                </item>-->
+<!--                <item name="media_allowed" xsi:type="array">-->
 
-                </item>
-            </argument>
-        </arguments>
-    </type>
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
 
     <type name="TruongNX\Tutorial\Logger\Handler">
         <arguments>

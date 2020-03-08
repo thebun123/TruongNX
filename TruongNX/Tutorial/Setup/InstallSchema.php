@@ -15,7 +15,7 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             $table = $installer->getConnection()->newTable(
                 $installer->getTable('faq_table')
             )->addColumn(
-                'id',
+                'faq_id',
                 \Magento\Framework\Db\Ddl\Table::TYPE_INTEGER,
                 null,
                 [
@@ -24,7 +24,7 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     'primary'  => true,
                     'unsigned' => true,
                 ],
-                'ID'
+                'FAQ ID'
             )->addColumn(
                 'title',
                 \Magento\Framework\Db\Ddl\Table::TYPE_TEXT,

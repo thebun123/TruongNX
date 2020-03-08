@@ -27,6 +27,16 @@ class FAQ extends \Magento\Framework\Model\AbstractModel implements FAQInterface
         return $this->setData(self::ID, $id);
     }
 
+    public function getObs()
+    {
+        return $this->getData(self::OBS_TITLE);
+    }
+
+    public function setObs($obs)
+    {
+        return $this->setData(self::OBS_TITLE, $obs);
+    }
+
     public function getTitle()
     {
         return $this->getData(self::TITLE);

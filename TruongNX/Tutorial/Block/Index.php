@@ -23,9 +23,15 @@ class Index extends \Magento\Framework\View\Element\Template
     public function _prepareLayout()
     {
         $this->pageConfig->getTitle()->set(
-            $this->_scopeConfig->getValue('tutorial/general/display_title', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)
+            $this->_scopeConfig->getValue(
+                'truongnx/tutorial_general/general/display_title',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            )
         );
-        $faqPerTab = (int) $this->_scopeConfig->getValue('tutorial/general/display_number_faq');
+        $faqPerTab = (int) $this->_scopeConfig->getValue(
+            'truongnx/tutorial_general/general/display_number_faq',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
 
         if ($this->getFAQCollection()) {
             $pager = $this->getLayout()->createBlock(
@@ -42,7 +48,7 @@ class Index extends \Magento\Framework\View\Element\Template
 
     public function getFAQCollection()
     {
-        $faqPerTab = (int) $this->_scopeConfig->getValue('tutorial/general/display_number_faq', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $faqPerTab = (int) $this->_scopeConfig->getValue('truongnx/tutorial_general/general/display_number_faq', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $page = ($this->getRequest()->getParam('p')) ? $this->getRequest()->getParam('p') : 1;
         $pageSize = ($this->getRequest()->getParam('limit')) ? $this->getRequest()->getParam('limit') : $faqPerTab;
 

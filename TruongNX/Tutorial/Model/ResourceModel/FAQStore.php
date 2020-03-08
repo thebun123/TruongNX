@@ -2,9 +2,9 @@
 
 namespace TruongNX\Tutorial\Model\ResourceModel;
 
-class FAQ extends \Magento\Framework\Model\ResourceModel\Db\AbstractDB
+class FAQStore extends \Magento\Framework\Model\ResourceModel\Db\AbstractDB
 {
-    protected $_idFieldName = 'faq_id';
+    protected $_idFieldName = 'id';
 
     protected $_date;
 
@@ -19,6 +19,6 @@ class FAQ extends \Magento\Framework\Model\ResourceModel\Db\AbstractDB
 
     protected function _construct()
     {
-        $this->_init('faq_table', 'faq_id');
+        $this->_init('faq_store', 'id');
     }
 }

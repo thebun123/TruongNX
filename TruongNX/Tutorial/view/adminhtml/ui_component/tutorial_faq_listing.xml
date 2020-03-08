@@ -20,7 +20,7 @@
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
             <argument name="name" xsi:type="string">faq_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="primaryFieldName" xsi:type="string">faq_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -47,62 +47,22 @@
 
         <!-- Filters -->
         <filters name="listing_filters">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-<!--                <item name="storageConfig" xsi:type="array">-->
-<!--                <item name="provider" xsi:type="string">tutorial_faq_listing.tutorial_faq_listing.listing_top.bookmarks</item>-->
-<!--                <item name="namespace" xsi:type="string">current.filters</item>-->
-<!--            </item>-->
-<!--                <item name="childDefaults" xsi:type="array">-->
-<!--                    <item name="provider" xsi:type="string">tutorial_faq_listing.tutorial_faq_listing.listing_top.listing_filters</item>-->
-<!--                    <item name="imports" xsi:type="array">-->
-<!--                        <item name="visible" xsi:type="string">tutorial_faq_listing.tutorial_faq_listing.listing_top.bookmarks:current.columns.${ $.index }.visible</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-            </item>
-        </argument>
-
-        <!-- Department ID Filter -->
-        <filterRange name="faq_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="dataScope" xsi:type="string">id</item> <!-- Column name in DB -->
-<!--                    <item name="label" xsi:type="string" translate="true">ID</item> &lt;!&ndash; Label on grid &ndash;&gt;-->
-                    <item name="childDefaults" xsi:type="array">
-                        <item name="provider" xsi:type="string">tutorial_faq_listing.tutorial_faq_listing.listing_top.listing_filters</item>
-                    </item>
                 </item>
             </argument>
-            <!-- Department ID Filter -->
-<!--            <filterInput name="from">-->
-<!--                <argument name="data" xsi:type="array">-->
-<!--                    <item name="config" xsi:type="array">-->
-<!--                        <item name="dataScope" xsi:type="string">from</item>-->
-<!--                        <item name="label" xsi:type="string" translate="true">from</item>-->
-<!--                        <item name="placeholder" xsi:type="string" translate="true">From</item>-->
-<!--                    </item>-->
-<!--                </argument>-->
-<!--            </filterInput>-->
-<!--            <filterInput name="to">-->
-<!--                <argument name="data" xsi:type="array">-->
-<!--                    <item name="config" xsi:type="array">-->
-<!--                        <item name="dataScope" xsi:type="string">to</item>-->
-<!--                        <item name="label" xsi:type="string" translate="true">to</item>-->
-<!--                        <item name="placeholder" xsi:type="string" translate="true">To</item>-->
-<!--                    </item>-->
-<!--                </argument>-->
-<!--            </filterInput>-->
-        </filterRange>
 
-<!--             Department name Filter -->
-<!--            <filterInput name="department_name">-->
-<!--                <argument name="data" xsi:type="array">-->
-<!--                    <item name="config" xsi:type="array">-->
-<!--                        <item name="dataScope" xsi:type="string">title</item> &lt;!&ndash; Column name in DB &ndash;&gt;-->
-<!--                        <item name="label" xsi:type="string" translate="true">Title</item> &lt;!&ndash; Label on grid &ndash;&gt;-->
-<!--                    </item>-->
-<!--                </argument>-->
-<!--            </filterInput>-->
+            <!-- Department ID Filter -->
+            <filterRange name="faq_id">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataScope" xsi:type="string">id</item> <!-- Column name in DB -->
+                        <item name="childDefaults" xsi:type="array">
+                            <item name="provider" xsi:type="string">tutorial_faq_listing.tutorial_faq_listing.listing_top.listing_filters</item>
+                        </item>
+                    </item>
+                </argument>
+            </filterRange>
         </filters>
 
         <massaction name="listing_massaction">
@@ -159,14 +119,14 @@
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">id</item>
+                    <item name="indexField" xsi:type="string">faq_id</item>
                     <item name="sorting" xsi:type="string">desc</item>
                     <item name="sortOrder" xsi:type="number">0</item>
                 </item>
             </argument>
         </selectionsColumn>
 
-        <column name="id">
+        <column name="faq_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">textRange</item>
@@ -240,7 +200,7 @@
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">107</item>
-                    <item name="indexField" xsi:type="string">id</item>
+                    <item name="indexField" xsi:type="string">faq_id</item>
                 </item>
             </argument>
         </actionsColumn>

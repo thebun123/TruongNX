@@ -1,18 +1,18 @@
 <?php
 
-namespace TruongNX\Tutorial\Model\ResourceModel\Faq;
+namespace TruongNX\Tutorial\Model\ResourceModel\FaqStore;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
-    protected $_idFieldName = 'faq_id';
+    protected $_idFieldName = 'id';
     // protected $_eventPrefix = 'truongnx_tutorial_faq_collection';
     // protected $_eventObject = 'faq_collection';
 
     protected function _construct()
     {
         $this->_init(
-            'TruongNX\Tutorial\Model\FAQ',
-            'TruongNX\Tutorial\Model\ResourceModel\Faq'
+            'TruongNX\Tutorial\Model\FAQStore',
+            'TruongNX\Tutorial\Model\ResourceModel\FAQStore'
         );
     }
 

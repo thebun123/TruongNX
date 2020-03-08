@@ -4,21 +4,28 @@ namespace TruongNX\Tutorial\Controller\Adminhtml\Faq;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
+use TruongNX\Tutorial\Logger\Logger;
 
 class AddRow extends Action
 {
     private $coreRegistry;
+    private $log;
 
     private $faqFactory;
+    private $_faqStoreFactory;
 
     public function __construct(
         Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
-        \TruongNX\Tutorial\Model\FAQFactory $faqFactory
+        \TruongNX\Tutorial\Model\FAQFactory $faqFactory,
+        \TruongNX\Tutorial\Model\FAQStoreFactory $faqStoreFactory,
+        Logger $log
     ) {
         parent::__construct($context);
         $this->coreRegistry = $coreRegistry;
         $this->faqFactory = $faqFactory;
+        $this->log = $log;
+        $this->_faqStoreFactory = $faqStoreFactory;
     }
 
     /**
@@ -27,6 +34,7 @@ class AddRow extends Action
     public function execute()
     {
         $rowId = (int) $this->getRequest()->getParam('id');
+//        $this->log->info(json_encode($rowId));
         $rowData = $this->faqFactory->create();
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         if ($rowId) {

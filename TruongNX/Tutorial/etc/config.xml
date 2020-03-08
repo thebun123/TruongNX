@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <tutorial>
+        <tutorial_general>
             <general>
                 <display_title>FAQ Table</display_title>
                 <display_number_faq>5</display_number_faq>
             </general>
-        </tutorial>
+        </tutorial_general>
+        <tutorial_store_view>
+            <general>
+                <storeview>Default Store View</storeview>
+            </general>
+        </tutorial_store_view>
     </default>
 </config>
