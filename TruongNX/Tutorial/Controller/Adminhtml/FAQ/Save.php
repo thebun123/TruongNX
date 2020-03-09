@@ -42,70 +42,6 @@ class Save extends \Magento\Backend\App\Action
         $this->uploaderFactory = $uploaderFactory;
     }
 
-//    public function execute()
-//    {
-//        $isPost = $this->getRequest()->getPost();
-//
-//        if ($isPost) {
-//            $model = $this->faqFactory->create();
-//            $postId = $this->getRequest()->getParam('id');
-//            $this->log->info(var_dump($postId));
-//            if ($postId) {
-//                $model->load($postId);
-//            }
-//            $faqImage = $this->getRequest()->getFiles('faq_image');
-//            $fileName = ($faqImage && array_key_exists('name', $faqImage)) ?
-//                $faqImage['name'] : null;
-//            if ($faqImage && $fileName) {
-//                try {
-//                    $uploader = $this->_objectManager->create(
-//                        Uploader::class,
-//                        ['fileId' =>'faq_image']
-//                    );
-//                    $uploader->setAllowedExtensions('jpg', 'jpeg', 'png');
-    ////                    /** @var \Magento\Framework\Image\Adapter\AdapterInterface
-    ////                    $imageAdapterFactory */
-    ////                    $imageAdapterFactory = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')->create();
-//                    $uploader->setAllowRenameFiles(true);
-//                    $uploader->setFilesDispersion(true);
-//                    $uploader->setAllowCreateFolders(true);
-//                    /** @var Read
-//                    $mediaDirectory */
-//                    $mediaDirectory = $this->_objectManager->get(Filesystem::class)
-//                        ->getDirectoryRead(DirectoryList::MEDIA);
-//                    $result = $uploader->save($mediaDirectory)->getAbsolutePath('Tutorial/Images');
-//                    $model->setImage('Tutorial/Images' . $result['file']);
-//                } catch (\Exception $e) {
-//                    if (0 == $e->getCode()) {
-//                        $this->messageManager->addError($e->getMessage());
-//                    }
-//                }
-//            }
-//            $data = $this->getRequest()->getPostValue();
-//            try {
-//                $rowData = $this->faqFactory->create();
-//                $rowData->setData($data);
-//                if (isset($data['id'])) {
-//                    $rowData->setEntityId($data['id']);
-//                }
-//                $model->save();
-//                $this->messageManager->addSuccess(__('The FAQ has been saved.'));
-//
-//                if ($this->getRequest()->getParam('back')) {
-//                    $this->_redirect('tutorial/faq/index');
-//                    return;
-//                }
-//                $this->_redirect('*/*/');
-//                return;
-//            } catch (\Exception $e) {
-//                $this->messageManager->addError($e->getMessage());
-//            }
-//
-//            $this->_getSession()->setFormData($data);
-//            $this->_redirect('tutorial/faq/index');
-//        }
-//    }
-
     public function execute()
     {
         $obs_title = [];
@@ -149,6 +85,8 @@ class Save extends \Magento\Backend\App\Action
             $faqStoreData->setFAQ_Id($faqData->getData('faq_id'));
             $faqStoreData->setStore_Id($store_id);
             $faqStoreData->save();
+
+
             // event
             $this->_eventManager->dispatch('truongnx_tutorial_modified_db', ['title'=>$obs_title, 'id'=>$faq_id]);
 
